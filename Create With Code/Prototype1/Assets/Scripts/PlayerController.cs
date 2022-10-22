@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     // private variables
     private Vector3 m_distance;
 
+    // methods & functions
+
     // Start is called before the first frame update
     void Start()
     {
