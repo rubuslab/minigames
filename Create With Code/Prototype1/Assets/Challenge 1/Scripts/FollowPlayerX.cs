@@ -10,12 +10,14 @@ public class FollowPlayerX : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // I am(this) the main camera.
+        offset = this.transform.position - plane.transform.position;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = plane.transform.position + offset;
+        transform.position = offset + plane.transform.position;
     }
 }
