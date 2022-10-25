@@ -10,6 +10,7 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        InvokeRepeating("NewRandomAnimal", 2, 1.5f);
         
     }
 
@@ -19,7 +20,7 @@ public class SpawnManager : MonoBehaviour
         
     }
 
-    public void NewRandomAnimal(Quaternion rotation)
+    public void NewRandomAnimal()
     {
         Debug.Log("received NewRandomAnimal method call.");
 
@@ -27,8 +28,9 @@ public class SpawnManager : MonoBehaviour
         int random_x = (int)(Random.value * 30) - 15; // [-15, 15]
         int random_z = (int)(Random.value * 20) + 10; // [10, 30]
 
-        Instantiate(animalPrefabs[index],
+        GameObject prefab = animalPrefabs[index];
+        Instantiate(prefab,
             new Vector3(random_x, 0, random_z),
-            rotation);
+            prefab.transform.rotation);
     }
 }

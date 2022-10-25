@@ -33,8 +33,19 @@ public class MoveForward : MonoBehaviour
             {
                 var obj = GameObject.Find("SpawnManager(Empty)");
                 var manager = obj.GetComponent<SpawnManager>();
-                manager.NewRandomAnimal(rotation);
+                // manager.NewRandomAnimal();
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // means I am Projectile triggered an animal
+        if (this.tag == "Projectile" && other.tag == "Animal")
+        {
+            Destroy(other.gameObject);
+            Destroy(this.gameObject);
+            Debug.LogWarning("Shoot an animal.");
         }
     }
 }
