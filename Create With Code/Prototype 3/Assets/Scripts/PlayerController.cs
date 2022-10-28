@@ -35,8 +35,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        bool mobileTouched = Input.touchCount > 0 ? Input.GetTouch(0).phase == TouchPhase.Began : false;
+
         // if player pressed spacebar, jump up
-        if (m_isOnGround && !isGameOver && Input.GetKeyDown(KeyCode.Space))
+        if (m_isOnGround && !isGameOver &&
+            (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0) || mobileTouched))
         {
             // stop run particle when jumping
             m_dirtyRunParticle.Stop();
