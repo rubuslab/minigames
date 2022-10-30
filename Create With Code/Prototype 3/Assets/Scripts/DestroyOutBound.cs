@@ -20,6 +20,16 @@ public class DestroyOutBound : MonoBehaviour
     {
         if (this.transform.position.x < -10.0f || this.transform.position.y < -2.0f)
         {
+            PlayerController playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+            playerController.AddScore();
+
+            // if move speed is super speed, add additional score.
+            MoveLeft moveLeft = this.transform.GetComponent<MoveLeft>();
+            if (moveLeft.IsSuperSpeed())
+            {
+                playerController.AddScore();
+            }
+ 
             Object.Destroy(gameObject);
         }
     }

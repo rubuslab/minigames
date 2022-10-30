@@ -14,13 +14,21 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("NewObstacle", 1.0f, 2.2f);        
+        m_playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+
+        // start game 3 seconds later
+        InvokeRepeating("GameStart", 5.0f, .0f);
+    }
+
+    private void GameStart()
+    {
+        m_playerController.SetPlayerRun();
+        InvokeRepeating("NewObstacle", 1.0f, 3.0f);
     }
 
     // Update is called once per frame
     void Update()
-    {
-        m_playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+    {        
     }
 
     private void NewObstacle()
